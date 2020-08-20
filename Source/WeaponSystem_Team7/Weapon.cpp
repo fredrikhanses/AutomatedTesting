@@ -25,19 +25,20 @@ AWeapon::AWeapon()
 
 void AWeapon::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Magenta, "Collided with Weapon");
-
 	AWeaponSystem_Team7Character* character = Cast<AWeaponSystem_Team7Character>(OtherActor);
-
-	AttachToComponent(character->GetMesh1P(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, "GripPoint");
-	Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	SetActorHiddenInGame(true);
-	character->Weapon.Add(this);
-	if (character->CurrentWeapon == nullptr)
+	if (character != nullptr)
 	{
-		bIsEquipped = true;
-		character->CurrentWeapon = character->Weapon[0];
-		character->CurrentWeapon->SetActorHiddenInGame(false);
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Magenta, "Collided with Weapon");
+		AttachToComponent(character->GetMesh1P(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, "GripPoint");
+		Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		SetActorHiddenInGame(true);
+		character->Weapon.Add(this);
+		if (character->CurrentWeapon == nullptr)
+		{
+			bIsEquipped = true;
+			character->CurrentWeapon = character->Weapon[0];
+			character->CurrentWeapon->SetActorHiddenInGame(false);
+		}
 	}
 }
 
