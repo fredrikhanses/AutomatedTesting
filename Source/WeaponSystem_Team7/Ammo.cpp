@@ -40,7 +40,7 @@ void UAmmo::Reload()
 		SurplusAmmo -= ClipSize;
 		if (SurplusAmmo < 0)
 		{
-			ClipSize =- SurplusAmmo;
+			ClipSize += SurplusAmmo;
 			SurplusAmmo = 0;
 		}
 		CurrentAmmo += ClipSize;
