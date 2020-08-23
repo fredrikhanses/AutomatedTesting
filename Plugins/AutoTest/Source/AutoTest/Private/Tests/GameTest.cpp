@@ -67,12 +67,12 @@ bool FGameModeTest::RunTest(const FString& Parameters)
 	return true;
 }
 
-//IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCharacterTest, "UnitTests.CharacterTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
-//
-//bool FCharacterTest::RunTest(const FString& Parameters)
-//{
-//	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
-//	UWorld* world = GetTestWorld();
-//	TestNotNull("Essential actor is spawned", TActorIterator<AWeaponSystem_Team7Character>(world));
-//	return true;
-//}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCharacterTest, "UnitTests.CharacterTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FCharacterTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	TestNotNull("Player character is spawned", UGameplayStatics::GetPlayerCharacter(world, 0));
+	return true;
+}

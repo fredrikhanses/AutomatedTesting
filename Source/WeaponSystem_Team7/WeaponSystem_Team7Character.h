@@ -102,7 +102,7 @@ public:
 public:
 	/**
 	* Changes the CurrentWeapon to another in the list of weapons the character is holding.
-	*Just specify the index to change to that weapon.
+	* Just specify the index to change to that weapon.
 	*/
 	UFUNCTION(BlueprintCallable)
 		void ChangeWeapon(int index);
@@ -118,7 +118,7 @@ protected:
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
-	/** Handles stafing movement, left and right */
+	/** Handles strafing movement, left and right */
 	void MoveRight(float Val);
 
 	/**
