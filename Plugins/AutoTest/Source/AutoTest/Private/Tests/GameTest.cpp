@@ -76,3 +76,58 @@ bool FCharacterTest::RunTest(const FString& Parameters)
 	TestNotNull("Player character is spawned", UGameplayStatics::GetPlayerCharacter(world, 0));
 	return true;
 }
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFireSoundTest, "UnitTests.FireSoundTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFireSoundTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	AWeaponSystem_Team7Character* PlayerCharacter = Cast<AWeaponSystem_Team7Character>(UGameplayStatics::GetPlayerCharacter(world, 0));
+	TestNotNull("FireSound is set correctly", PlayerCharacter->FireSound);
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFireAnimationTest, "UnitTests.FireAnimationTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFireAnimationTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	AWeaponSystem_Team7Character* PlayerCharacter = Cast<AWeaponSystem_Team7Character>(UGameplayStatics::GetPlayerCharacter(world, 0));
+	TestNotNull("FireAnimation is set correctly", PlayerCharacter->FireAnimation);
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFirstPersonMeshTest, "UnitTests.FirstPersonMeshTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFirstPersonMeshTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	AWeaponSystem_Team7Character* PlayerCharacter = Cast<AWeaponSystem_Team7Character>(UGameplayStatics::GetPlayerCharacter(world, 0));
+	TestNotNull("FirstPersonMesh is set correctly", PlayerCharacter->Mesh1P);
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFirstPersonGunTest, "UnitTests.FirstPersonGunTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFirstPersonGunTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	AWeaponSystem_Team7Character* PlayerCharacter = Cast<AWeaponSystem_Team7Character>(UGameplayStatics::GetPlayerCharacter(world, 0));
+	TestNotNull("FirstPersonGun is set correctly", PlayerCharacter->FP_Gun);
+	return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFirstPersonCameraComponentTest, "UnitTests.FirstPersonCameraComponentTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFirstPersonCameraComponentTest::RunTest(const FString& Parameters)
+{
+	AutomationOpenMap(TEXT("/Game/FirstPersonCPP/Maps/Level_ShootingRange"));
+	UWorld* world = GetTestWorld();
+	AWeaponSystem_Team7Character* PlayerCharacter = Cast<AWeaponSystem_Team7Character>(UGameplayStatics::GetPlayerCharacter(world, 0));
+	TestNotNull("FirstPersonCameraComponent is set correctly", PlayerCharacter->FirstPersonCameraComponent);
+	return true;
+}

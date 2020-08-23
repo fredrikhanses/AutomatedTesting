@@ -10,7 +10,7 @@
 class UInputComponent;
 
 UCLASS(config = Game)
-class AWeaponSystem_Team7Character : public ACharacter
+class WEAPONSYSTEM_TEAM7_API AWeaponSystem_Team7Character : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -23,7 +23,6 @@ public:
 	*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Weapon)
 		TArray<AWeapon*> Weapon;
-
 
 	/**
 	* The current weapon that the character is holding in his hands.
